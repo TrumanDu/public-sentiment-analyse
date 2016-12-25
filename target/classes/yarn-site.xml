@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<configuration>
+
+    <property>
+         <name>yarn.resourcemanager.hostname</name>
+         <value>10.16.238.92</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+	<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+	<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+
+<!--     <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>10.16.238.92:8032</value>
+    </property> -->
+   <!--  <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>10.16.238.92:8030</value>
+    </property> -->
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>10.16.238.92:8031</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.admin.address</name>
+        <value>10.16.238.92:8033</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>10.16.238.92:8088</value>
+    </property>
+    <property>
+	<name>yarn.resourcemanager.webapp.https.address</name>
+	<value>10.16.238.92:8090</value>
+    </property>
+    
+    <property>
+	<name>yarn.application.classpath</name>
+	<value>/data/bigdata/hadoop-2.6.0-cdh5.4.0/etc/hadoop,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/common/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/common/lib/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/hdfs/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/hdfs/lib/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/mapreduce/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/mapreduce/lib/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/yarn/*,/data/bigdata/hadoop-2.6.0-cdh5.4.0/share/hadoop/yarn/lib/*</value>
+    </property>
+
+</configuration>
