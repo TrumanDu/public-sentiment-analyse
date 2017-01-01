@@ -36,7 +36,7 @@
     </filter>
   </appender>
 
-  <logger name="com.newegg.ec2" level="debug"/>
+  <logger name="com.aibibang" level="debug"/>
   <root level="info">
    <appender-ref ref="STDOUT"/> 
      <appender-ref ref="FILE"/>

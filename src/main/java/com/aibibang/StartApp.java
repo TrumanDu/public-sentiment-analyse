@@ -21,9 +21,9 @@ public class StartApp {
 		logger.info("---------------------------------------------");
 		conf.set("mapreduce.framework.name", "yarn");
 		conf.set("mapreduce.app-submission.cross-platform", "true");
-		conf.set("yarn.resourcemanager.address", "****:8032");
-		conf.set("yarn.resourcemanager.scheduler.address", "****:8030");
-		conf.set("fs.defaultFS", "hdfs://****:8020");
+		conf.set("yarn.resourcemanager.address", "192.168.0.105:8032");
+		conf.set("yarn.resourcemanager.scheduler.address", "192.168.0.105:8030");
+		conf.set("fs.defaultFS", "hdfs://192.168.0.105:8020");
 		conf.set("mapred.jar",
 				"D://workspace//public-sentiment-analyse//target//public-sentiment-analyse-0.0.1-SNAPSHOT-jar-with-dependencies.jar");
 		conf.set("hbase.zookeeper.quorum", "lab1,lab2,lab3");
