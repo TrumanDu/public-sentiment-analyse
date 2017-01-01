@@ -16,7 +16,7 @@ public class StartApp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Configuration conf = HBaseConfiguration.create();
-		System.setProperty("hadoop.home.dir", "D:/hadoop");
+		System.setProperty("hadoop.home.dir", "E://hadoop");
 		//System.setProperty("HADOOP_USER_NAME", "");
 		logger.info("---------------------------------------------");
 		conf.set("mapreduce.framework.name", "yarn");
@@ -25,7 +25,7 @@ public class StartApp {
 		conf.set("yarn.resourcemanager.scheduler.address", "192.168.0.105:8030");
 		conf.set("fs.defaultFS", "hdfs://192.168.0.105:8020");
 		conf.set("mapred.jar",
-				"D://workspace//public-sentiment-analyse//target//public-sentiment-analyse-0.0.1-SNAPSHOT-jar-with-dependencies.jar");
+				"E://git//GitHub//public-sentiment-analyse//target//public-sentiment-analyse-0.0.1-SNAPSHOT-jar-with-dependencies.jar");
 		conf.set("hbase.zookeeper.quorum", "lab1,lab2,lab3");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
 		conf.set("hbase.cluster.distributed", "true");
