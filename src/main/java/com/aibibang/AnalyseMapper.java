@@ -13,6 +13,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.aibibang.common.ChineseWordSegmentation;
 import com.aibibang.common.Constant;
 
 /** 
@@ -41,7 +42,14 @@ public class AnalyseMapper extends TableMapper<ImmutableBytesWritable,Put> {
             System.out.println("列：" + new String(CellUtil.cloneQualifier(cell)) + "====值:" + new String(CellUtil.cloneValue(cell))); 
         } 
         Put put = new Put(value.getRow());
-        put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("topicTitle"), Bytes.toBytes("aaaaa"));
+        try {
+        	String result = ChineseWordSegmentation.Segmentation("数据挖掘是什么？");
+        	logger.error("===================================>>>>>>>>:"+result);
+			put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("topicTitle"), Bytes.toBytes(result));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		context.write(key, put);
 	}
 	
