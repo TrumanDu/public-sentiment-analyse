@@ -38,19 +38,39 @@ public class AnalyseMapper extends TableMapper<ImmutableBytesWritable,Put> {
 			InterruptedException {
 		logger.error("获得到rowkey:" + new String(value.getRow()));
 		System.out.println("获得到rowkey:" + new String(value.getRow())); 
+		String columnValue="";
+		Put put = new Put(value.getRow());
         for (Cell cell : value.rawCells()) { 
-            System.out.println("列：" + new String(CellUtil.cloneQualifier(cell)) + "====值:" + new String(CellUtil.cloneValue(cell))); 
+        	String column = new String(CellUtil.cloneQualifier(cell));
+        	if("topicTitle".equals(column)){
+        		columnValue = new String(CellUtil.cloneValue(cell));
+        		break;
+        	}
+            //System.out.println("列：" + new String(CellUtil.cloneQualifier(cell)) + "====值:" + new String(CellUtil.cloneValue(cell))); 
         } 
-        Put put = new Put(value.getRow());
         try {
-        	String result = ChineseWordSegmentation.Segmentation("数据挖掘是什么？");
-        	logger.error("===================================>>>>>>>>:"+result);
-			put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("topicTitle"), Bytes.toBytes(result));
+        	String result = ChineseWordSegmentation.Segmentation(columnValue);
+        	boolean isAlert = Constant.isAlert(ChineseWordSegmentation.Segmentation(result));
+        	if(result.isEmpty()){
+        		put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("keyTile"), Bytes.toBytes(""));
+        	}else{
+        		put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("keyTile"), Bytes.toBytes(result));
+        	}
+			
+			if(isAlert){
+				put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("level"), Bytes.toBytes("1"));
+			}else{
+				put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("level"), Bytes.toBytes("0"));
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		context.write(key, put);
+        if(!put.isEmpty()){
+        	context.write(key, put);
+        }
+		
 	}
 	
 }

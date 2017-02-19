@@ -116,6 +116,10 @@
         <targetPath>lib/</targetPath>
         <directory>lib/</directory>
       </resource>
+      <resource>
+       
+        <directory>src/main/resources/</directory>
+      </resource>
        <!-- <resource>
         <targetPath>models/</targetPath>
         <directory>models/</directory>
