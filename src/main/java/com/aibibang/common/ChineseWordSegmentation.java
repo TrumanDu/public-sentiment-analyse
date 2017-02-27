@@ -1,5 +1,6 @@
 package com.aibibang.common;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.fnlp.ml.types.Dictionary;
@@ -50,6 +51,7 @@ public class ChineseWordSegmentation {
 			System.out.println(System.currentTimeMillis()-start);
 			System.out.println(Constant.isAlert(result));
 			System.out.println(System.currentTimeMillis()-start);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

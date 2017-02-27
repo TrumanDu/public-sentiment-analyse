@@ -56,7 +56,7 @@ public class AnalyseMapper extends TableMapper<ImmutableBytesWritable,Put> {
         	}else{
         		put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("keyTile"), Bytes.toBytes(result));
         	}
-			
+        	put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("ruleKey"), Bytes.toBytes(Constant.ruleKey));
 			if(isAlert){
 				put.addColumn(Bytes.toBytes(Constant.BASICDATAFAMILY), Bytes.toBytes("level"), Bytes.toBytes("1"));
 			}else{
